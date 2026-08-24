@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opening Splitup…</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="page">
+    <main class="join-redirect">
+      <p>Opening Splitup…</p>
+      <script>
+        // This page only ever loads when the app isn't installed, or
+        // Universal Link (iOS) / App Link (Android) verification failed —
+        // if the app is installed and verified, the OS opens it directly
+        // and this page is never hit. No deferred deep linking: the
+        // `code` query param isn't read or persisted here.
+        var ua = navigator.userAgent;
+        if (/iPhone|iPad|iPod/i.test(ua)) {
+          window.location.href = "https://apps.apple.com/app/id6744556329";
+        } else if (/Android/i.test(ua)) {
+          window.location.href = "https://play.google.com/store/apps/details?id=in.tappstudio.splitup";
+        } else {
+          window.location.href = "https://splitup.tappstudio.in";
+        }
+      </script>
+      <p>If you weren't redirected:
+        <a href="https://apps.apple.com/app/id6744556329">iOS</a> |
+        <a href="https://play.google.com/store/apps/details?id=in.tappstudio.splitup">Android</a>
+      </p>
+    </main>
+  </div>
+</body>
+</html>

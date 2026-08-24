@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.tappstudio.splitup",
+      "sha256_cert_fingerprints": [
+        "BA:C2:FB:F9:0C:0C:FB:03:41:B2:D6:FB:3F:C6:B4:D9:8D:E9:C3:E1:D0:28:03:F2:F8:4D:3F:91:69:23:13:3B",
+        "63:29:72:DC:E0:02:01:1A:23:C2:7A:D3:71:AA:1A:88:CC:9F:D2:02:6C:0A:8B:C9:8C:4B:A8:42:D4:C9:FB:3B"
+      ]
+    }
+  }
+]

@@ -1,0 +1,151 @@
+/* Splitup landing page styles.
+   Pure CSS, no build step, no framework beyond the Google Fonts stylesheet
+   linked in each page's <head> (the only external asset this site loads).
+   Color/spacing tokens below are pulled directly from the Flutter app's
+   design system (lib/styles/colors.dart AppColors, lib/styles/text_styles.dart
+   AppTextStyles) so the web page matches the in-app brand exactly. */
+
+:root {
+  --accent: #ffdb1f; /* AppColors.primary / secondary */
+  --on-accent: #1a1a1a; /* AppColors.onPrimary */
+  --bg: #fff9f0; /* AppColors.surface (light theme) */
+  --surface: #ffffff; /* AppColors.cardBackground */
+  --text: #1a1a1a; /* AppColors.textPrimary / onSurface */
+  --text-muted: #666666; /* AppColors.textSecondary */
+  --border: #e0e0e0; /* AppColors.outline / lightGrey */
+  --radius: 8px; /* matches AppTextStyles.inputDecoration's BorderRadius.circular(8) */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 24px 40px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.wordmark {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+  color: var(--text);
+}
+
+.wordmark .accent {
+  color: var(--on-accent);
+  background: var(--accent);
+  padding: 0 6px;
+  border-radius: 6px;
+}
+
+.tagline {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* Features */
+.features {
+  list-style: none;
+  margin: 0 0 48px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features li {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Store badges */
+.store-badges {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 56px;
+}
+
+.store-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  background: var(--text);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.store-button:hover {
+  opacity: 0.85;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.footer a {
+  color: inherit;
+}
+
+/* Join redirect page (join/index.html) */
+.join-redirect {
+  text-align: center;
+  padding-top: 96px;
+  font-size: 16px;
+}
+
+.join-redirect a {
+  color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .store-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #2a2a2a; /* AppColors.surfaceDark */
+    --surface: #333333; /* AppColors.cardBackgroundDark */
+    --text: #ffffff; /* AppColors.textPrimaryDark */
+    --text-muted: #cccccc; /* AppColors.textSecondaryDark */
+    --border: #424242; /* AppColors.outlineDark */
+  }
+
+  .store-button {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
