@@ -79,6 +79,14 @@ a {
   margin-bottom: 40px;
 }
 
+.app-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+  border-radius: 18px;
+}
+
 .wordmark {
   display: inline-block;
   font-size: 40px;
