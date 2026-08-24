@@ -89,20 +89,19 @@ body {
   margin-bottom: 56px;
 }
 
-.store-button {
+.store-badge {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  background: var(--text);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
+  line-height: 0;
+  transition: opacity 0.15s ease;
 }
 
-.store-button:hover {
+.store-badge img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.store-badge:hover {
   opacity: 0.85;
 }
 
@@ -142,10 +141,5 @@ body {
     --text: #ffffff; /* AppColors.textPrimaryDark */
     --text-muted: #cccccc; /* AppColors.textSecondaryDark */
     --border: #424242; /* AppColors.outlineDark */
-  }
-
-  .store-button {
-    background: var(--accent);
-    color: var(--on-accent);
   }
 }
