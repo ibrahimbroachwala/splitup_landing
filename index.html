@@ -41,45 +41,71 @@
       <h2 class="section-title">Features</h2>
       <ul class="features">
         <li>
-          Add expenses in seconds
-          <span class="feature-desc">Enter an amount, pick who paid, and split it equally or customize each share.</span>
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect><line x1="9" y1="8" x2="15" y2="8"></line><line x1="12" y1="12.5" x2="12" y2="17.5"></line><line x1="9.5" y1="15" x2="14.5" y2="15"></line></svg>
+          </span>
+          <span class="feature-content">
+            Add expenses in seconds
+            <span class="feature-desc">Enter an amount, pick who paid, and split it equally or customize each share.</span>
+          </span>
         </li>
         <li>
-          Manage groups
-          <span class="feature-desc">Create groups for trips, roommates, or regular hangouts and track balances per group.</span>
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="17" cy="8" r="2.5"></circle><path d="M15.5 14.2c2.6.4 4.5 2.7 4.5 5.8"></path></svg>
+          </span>
+          <span class="feature-content">
+            Manage groups
+            <span class="feature-desc">Create groups for trips, roommates, or regular hangouts and track balances per group.</span>
+          </span>
         </li>
         <li>
-          Settle up in a tap
-          <span class="feature-desc">See who owes what to whom, and mark expenses settled the moment they're paid.</span>
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12.5l2.5 2.5L16 9.5"></path></svg>
+          </span>
+          <span class="feature-content">
+            Settle up in a tap
+            <span class="feature-desc">See who owes what to whom, and mark expenses settled the moment they're paid.</span>
+          </span>
         </li>
         <li>
-          Works with your group's currency
-          <span class="feature-desc">Split fair, every time — no matter where your group is spending.</span>
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2.2 2.5-2.2s2.5.8 2.5 1.9c0 2.6-5 1.3-5 3.9 0 1.1 1.1 1.9 2.5 1.9s2.5-1 2.5-2.2"></path></svg>
+          </span>
+          <span class="feature-content">
+            Works with your group's currency
+            <span class="feature-desc">Split fair, every time — no matter where your group is spending.</span>
+          </span>
         </li>
         <li>
-          Sign in securely
-          <span class="feature-desc">Google and Apple Sign-In only — no extra passwords to remember.</span>
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15" r="1.4"></circle></svg>
+          </span>
+          <span class="feature-content">
+            Sign in securely
+            <span class="feature-desc">Google and Apple Sign-In only — no extra passwords to remember.</span>
+          </span>
         </li>
       </ul>
     </section>
 
     <section class="section" id="screenshots">
-      <h2 class="section-title">Screenshots</h2>
       <div class="screenshots">
         <div class="screenshot">
           <img src="/assets/screenshots/group-overview.png" alt="Group expense overview screen in Splitup" loading="lazy">
-          <span>Group overview</span>
         </div>
         <div class="screenshot">
           <img src="/assets/screenshots/bill-splitting.png" alt="Bill splitting screen in Splitup" loading="lazy">
-          <span>Bill splitting</span>
         </div>
         <div class="screenshot">
           <img src="/assets/screenshots/settle-up.png" alt="Settle up screen in Splitup" loading="lazy">
-          <span>Settle up</span>
         </div>
       </div>
     </section>
+
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
 
     <footer class="footer">
       <ul class="footer-links">
@@ -90,5 +116,40 @@
       &copy; 2026 TappStudio &middot; <a href="https://tappstudio.in">tappstudio.in</a>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImg = document.getElementById('lightboxImg');
+      var closeBtn = document.getElementById('lightboxClose');
+
+      function open(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close() {
+        lightbox.classList.remove('open');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.screenshot img').forEach(function (img) {
+        img.addEventListener('click', function () {
+          open(img.src, img.alt);
+        });
+      });
+
+      closeBtn.addEventListener('click', close);
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
+    })();
+  </script>
 </body>
 </html>
