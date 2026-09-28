@@ -1,155 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Splitup — Split expenses with friends</title>
-  <meta name="description" content="Split. Remind. Settle. Group expenses and bills with friends, fair and simple. Available on iOS and Android.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Splitup — Split. Remind. Settle.</title>
+<meta name="description" content="Group bills and expenses, minus the awkward math. Add expenses by voice, works offline, settle up with zero math. Free on iOS and Android — no subscriptions.">
+<link rel="canonical" href="https://splitup.tappstudio.in/">
+<meta name="theme-color" content="#ffdb1f" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2a2a2a" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://splitup.tappstudio.in/">
+<meta property="og:site_name" content="Splitup">
+<meta property="og:title" content="Splitup — Split. Remind. Settle.">
+<meta property="og:description" content="Group bills and expenses, minus the awkward math. Voice input, works offline, zero-math settle ups. No subscriptions.">
+<meta property="og:image" content="https://splitup.tappstudio.in/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Splitup — Split. Remind. Settle.">
+<meta name="twitter:description" content="Group bills and expenses, minus the awkward math. Voice input, works offline, zero-math settle ups.">
+<meta name="twitter:image" content="https://splitup.tappstudio.in/assets/og.png">
+
+<link rel="icon" href="/assets/app-icon.png" sizes="any">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-800-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-500-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Splitup","applicationCategory":"FinanceApplication","operatingSystem":"iOS, Android","description":"Group bill and expense splitting with voice input, offline support and zero-math settle ups.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"TappStudio","url":"https://tappstudio.in"},"url":"https://splitup.tappstudio.in/","downloadUrl":["https://apps.apple.com/app/id6744556329","https://play.google.com/store/apps/details?id=in.tappstudio.splitup"]}
+</script>
 </head>
 <body>
-  <div class="page">
-    <nav class="nav">
-      <a class="nav-logo" href="/">Splitup</a>
-      <ul class="nav-links">
-        <li><a href="#features">Features</a></li>
-        <li><a href="#screenshots">Screenshots</a></li>
-        <li><a href="/support/">Support</a></li>
-      </ul>
-    </nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<g id="s" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></g>
+<symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20c0-3.6 3.2-6.2 7.2-6.2s7.2 2.6 7.2 6.2"/></symbol>
+<symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h14v17l-2.3-1.6-2.4 1.6-2.3-1.6L9.7 20.5 7.3 18.9 5 20.5z"/><path d="M9 8h6M9 12h6"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 8-2.2 2.2a1.8 1.8 0 0 0 2.5 2.5l1.4-1.3 3.5 3.4a1.7 1.7 0 0 1-2.4 2.4l-.6-.6"/><path d="m14.2 16.6.8.8a1.7 1.7 0 0 0 2.4-2.4M3.5 7.5 7 4.8l4 1.3 2.8-1.4 3.4 1.2 3.3-.4"/><path d="M2 7.2 5 5.6"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="18.5" r="2.6"/><path d="m8.3 10.8 7.4-4M8.3 13.2l7.4 4"/></symbol>
+<symbol id="i-groups" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.1"/><path d="M3 19c0-3.2 2.7-5.6 6-5.6s6 2.4 6 5.6"/><circle cx="17.2" cy="8" r="2.5"/><path d="M15.8 13.6c2.7.4 4.7 2.7 4.7 5.4"/></symbol>
+<symbol id="i-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4M9 21.5h6"/></symbol>
+<symbol id="i-signal" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="14" width="3.4" height="6" rx="1"/><rect x="7.5" y="10" width="3.4" height="10" rx="1"/><rect x="13" y="6" width="3.4" height="14" rx="1"/><rect x="18.5" y="3" width="3.4" height="17" rx="1"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 8.5a15 15 0 0 1 19 0M6 12.4a10 10 0 0 1 12 0M9.4 16.2a5 5 0 0 1 5.2 0"/><circle cx="12" cy="19.6" r="1.3" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M12 2.8V12M12 12H2.8M12 12l6.6 6.6"/></symbol>
+<symbol id="i-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 18.5h9.6a4.1 4.1 0 0 0 1-8.1 6 6 0 0 0-8.3-4.2"/><path d="M6.4 8.7a4.9 4.9 0 0 0 1.2 9.7"/><path d="M3 3l18 18"/></symbol>
+<symbol id="i-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m5.5 18.5 13-13"/><circle cx="7.2" cy="7.2" r="2.7"/><circle cx="16.8" cy="16.8" r="2.7"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 1 0-12 0c0 5-2 6.5-2 6.5h16S18 14 18 9Z"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H7a2 2 0 0 0-2 2v14.4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.8z"/><path d="M14 2.8v5h5"/><path d="M12 11.5v6M9.4 15l2.6 2.6 2.6-2.6"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 0 18.4 14 14 0 0 1 0-18.4Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2" stroke-width="1.9"/><path d="m7.8 12.3 2.9 2.9 5.5-6"/></symbol>
+<symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v15M6.5 14l5.5 5.5L17.5 14"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M14 6.5l5.5 5.5L14 17.5"/></symbol>
+<symbol id="i-arrow-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12h-15M10 6.5 4.5 12 10 17.5"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.53a4.32 4.32 0 0 1 2.06-3.62 4.43 4.43 0 0 0-3.5-1.89c-1.47-.15-2.9.88-3.65.88s-1.92-.86-3.16-.84a4.65 4.65 0 0 0-3.91 2.39c-1.68 2.91-.43 7.2 1.2 9.56.8 1.15 1.74 2.44 2.98 2.4 1.2-.05 1.65-.78 3.1-.78s1.86.78 3.13.75c1.29-.02 2.11-1.17 2.9-2.33a10.3 10.3 0 0 0 1.31-2.7 4.18 4.18 0 0 1-2.46-3.82ZM14.7 5.4A4.25 4.25 0 0 0 15.68 2a4.33 4.33 0 0 0-2.85 1.47 4.04 4.04 0 0 0-1 3.28 3.58 3.58 0 0 0 2.87-1.35Z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M3.7 2.3a1.6 1.6 0 0 0-.7 1.35v16.7c0 .56.27 1.06.7 1.35l9.06-9.7L3.7 2.3Z"/><path d="m15.6 9.02-2.84 3.04 2.84 3.04 3.6-2.02c.86-.48.86-1.56 0-2.04l-3.6-2.02Z"/><path d="m13.9 13.2-9.1 9.74c.4.2.9.18 1.36-.08l9.44-5.3-1.7-4.36Z" opacity=".85"/><path d="M4.8 1.06c-.46-.26-.96-.28-1.36-.08l9.1 9.74 1.7-4.36L4.8 1.06Z" opacity=".7"/></symbol>
+<symbol id="i-burst" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"><path d="M14 64C24 58 34 54 44 52"/><path d="M40 12c4 12 8 22 12 32"/><path d="M84 22c-8 8-14 16-20 26"/><circle cx="14" cy="34" r="4" stroke-width="4"/></symbol>
+<symbol id="i-sparkle" viewBox="0 0 100 100"><path fill="currentColor" d="M50 0c4 36 14 46 50 50-36 4-46 14-50 50-4-36-14-46-50-50 36-4 46-14 50-50Z"/></symbol>
+<symbol id="i-squiggle" viewBox="0 0 200 24" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M4 14C30 4 50 22 76 12S124 4 150 13s36 5 46-5"/></symbol>
+<symbol id="i-curve" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18c50-10 92 22 82 82"/><path d="m76 86 18 18 14-22"/></symbol>
+<symbol id="i-thread" viewBox="0 0 440 80" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><path d="M-6 40c36 0 66-30 118-20s72 52 124 34 70-48 120-26 62 12 90 12"/></symbol>
+</defs></svg>
 
-    <header class="hero">
-      <img class="app-icon" src="/assets/app-icon.png" alt="Splitup app icon" width="72" height="72">
-      <div class="wordmark">Split<span class="accent">up</span></div>
-      <p class="tagline">Split. Remind. Settle.</p>
-      <p class="description">Group expenses and bills with friends, fair and simple. Track shared costs, settle up in a tap, and keep everyone square — on iOS and Android.</p>
-    </header>
+<a class="sr-only" href="#main">Skip to content</a>
 
-    <div class="store-badges">
-      <a class="store-badge" href="https://apps.apple.com/app/id6744556329" aria-label="Download on the App Store">
-        <img src="/assets/app-store-badge.svg" alt="Download on the App Store" loading="lazy" width="144" height="48">
-      </a>
-      <a class="store-badge" href="https://play.google.com/store/apps/details?id=in.tappstudio.splitup" aria-label="Get it on Google Play">
-        <img src="/assets/google-play-badge.png" alt="Get it on Google Play" loading="lazy" width="161" height="48">
-      </a>
+<nav class="nav">
+  <div class="wrap nav-bar">
+    <a class="nav-logo" href="/"><img src="/assets/app-icon.webp" alt="" width="38" height="38">Splitup</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#gallery">See it</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-yellow nav-cta" href="#get">Get the app</a>
+    <details class="nav-menu">
+      <summary aria-label="Menu"><svg width="24" height="24" aria-hidden="true"><use href="#i-menu"/></svg></summary>
+      <div class="nav-menu-panel">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#gallery">See it</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="/support/">Support</a>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ Hero ============ -->
+<header class="hero">
+  <div class="dots"></div>
+  <svg class="doodle" style="left:0;top:58%;width:100%;height:80px;opacity:.5" aria-hidden="true"><use href="#i-thread"/></svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="h1">Split. Remind.<br><mark>Settle.</mark></h1>
+      <p class="lede">Group bills and expenses, minus the awkward math.</p>
+      <div class="hero-stickers">
+        <span class="sticker sticker-yellow"><span class="emoji">🎙️</span>Voice input</span>
+        <span class="sticker"><span class="emoji">📵</span>Works offline</span>
+        <span class="sticker"><span class="emoji">💸</span>No subscriptions</span>
+      </div>
+      <div class="badges" id="get">
+        <a class="badge" href="https://apps.apple.com/app/id6744556329">
+          <svg aria-hidden="true"><use href="#i-apple"/></svg>
+          <span class="badge-txt"><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+        <a class="badge" href="https://play.google.com/store/apps/details?id=in.tappstudio.splitup">
+          <svg aria-hidden="true"><use href="#i-play"/></svg>
+          <span class="badge-txt"><small>Get it on</small><strong>Google Play</strong></span>
+        </a>
+      </div>
     </div>
 
-    <section class="section" id="features">
-      <h2 class="section-title">Features</h2>
-      <ul class="features">
-        <li>
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect><line x1="9" y1="8" x2="15" y2="8"></line><line x1="12" y1="12.5" x2="12" y2="17.5"></line><line x1="9.5" y1="15" x2="14.5" y2="15"></line></svg>
-          </span>
-          <span class="feature-content">
-            Add expenses in seconds
-            <span class="feature-desc">Enter an amount, pick who paid, and split it equally or customize each share.</span>
-          </span>
-        </li>
-        <li>
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="17" cy="8" r="2.5"></circle><path d="M15.5 14.2c2.6.4 4.5 2.7 4.5 5.8"></path></svg>
-          </span>
-          <span class="feature-content">
-            Manage groups
-            <span class="feature-desc">Create groups for trips, roommates, or regular hangouts and track balances per group.</span>
-          </span>
-        </li>
-        <li>
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8 12.5l2.5 2.5L16 9.5"></path></svg>
-          </span>
-          <span class="feature-content">
-            Settle up in a tap
-            <span class="feature-desc">See who owes what to whom, and mark expenses settled the moment they're paid.</span>
-          </span>
-        </li>
-        <li>
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2.2 2.5-2.2s2.5.8 2.5 1.9c0 2.6-5 1.3-5 3.9 0 1.1 1.1 1.9 2.5 1.9s2.5-1 2.5-2.2"></path></svg>
-          </span>
-          <span class="feature-content">
-            Works with your group's currency
-            <span class="feature-desc">Split fair, every time — no matter where your group is spending.</span>
-          </span>
-        </li>
-        <li>
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15" r="1.4"></circle></svg>
-          </span>
-          <span class="feature-content">
-            Sign in securely
-            <span class="feature-desc">Google and Apple Sign-In only — no extra passwords to remember.</span>
-          </span>
-        </li>
-      </ul>
-    </section>
+    <div class="hero-stage">
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="screen">
+            <div class="app">
+              <div class="island"></div>
+              <div class="statusbar">
+                <span>10:51</span>
+                <span class="icons"><svg aria-hidden="true"><use href="#i-signal"/></svg><svg aria-hidden="true"><use href="#i-wifi"/></svg><span class="battery">53</span></span>
+              </div>
+              <div class="topbar">
+                <span class="round-btn"><svg aria-hidden="true"><use href="#i-person"/></svg></span>
+                <span><span class="gname">Yellowstone Park</span><span class="gmembers">3 members</span></span>
+                <span class="round-btn yellow"><svg aria-hidden="true"><use href="#i-receipt"/></svg></span>
+              </div>
+              <div class="app-content">
+                <div class="app-chips"><span class="app-btn">Ali</span><span class="app-btn">Hitesh</span><span class="app-btn">Max</span></div>
+                <div class="stats">
+                  <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-receipt"/></svg><div class="amt"><span class="cur">$</span>410</div><div class="cap">Total Expense</div></div>
+                  <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-chart"/></svg><div class="amt"><span class="cur">$</span>121.67</div><div class="cap">Your share</div></div>
+                  <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-receipt"/></svg><div class="amt red"><span class="cur">$</span>270</div><div class="cap">You paid</div></div>
+                  <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-handshake"/></svg><div class="amt green"><span class="cur">$</span>148.33</div><div class="cap">You get</div></div>
+                </div>
+                <div class="app-sec-title">How to settle</div>
+                <div class="settle-card">
+                  <div class="row"><svg aria-hidden="true"><use href="#i-handshake"/></svg><span class="names">Hitesh<small>Should pay</small>Ali</span><span class="amount"><span class="cur">$</span>109.17</span></div>
+                  <div class="actions"><span class="app-btn yellow">Settle</span><span class="app-btn">Remind</span></div>
+                </div>
+                <div class="settle-card">
+                  <div class="row"><svg aria-hidden="true"><use href="#i-handshake"/></svg><span class="names">Max<small>Should pay</small>Ali</span><span class="amount"><span class="cur">$</span>39.16</span></div>
+                  <div class="actions"><span class="app-btn yellow">Settle</span><span class="app-btn">Remind</span></div>
+                </div>
+              </div>
+              <div class="app-fade"></div>
+            </div>
+          </div>
+        </div>
 
-    <section class="section" id="screenshots">
-      <div class="screenshots">
-        <div class="screenshot">
-          <img src="/assets/screenshots/group-overview.png" alt="Group expense overview screen in Splitup" loading="lazy">
-        </div>
-        <div class="screenshot">
-          <img src="/assets/screenshots/bill-splitting.png" alt="Bill splitting screen in Splitup" loading="lazy">
-        </div>
-        <div class="screenshot">
-          <img src="/assets/screenshots/settle-up.png" alt="Settle up screen in Splitup" loading="lazy">
+        <div class="pop hero-pop">
+          <div class="stats">
+            <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-receipt"/></svg><div class="amt"><span class="cur">$</span>410</div><div class="cap">Total Expense</div></div>
+            <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-chart"/></svg><div class="amt"><span class="cur">$</span>121.67</div><div class="cap">Your share</div></div>
+            <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-receipt"/></svg><div class="amt red"><span class="cur">$</span>270</div><div class="cap">You paid</div></div>
+            <div class="stat"><svg class="wm" aria-hidden="true"><use href="#i-handshake"/></svg><div class="amt green"><span class="cur">$</span>148.33</div><div class="cap">You get</div></div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</header>
 
-    <div class="lightbox" id="lightbox">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">&times;</button>
-      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+<!-- ============ Marquee ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Voice input</span><span class="star">✦</span><span>Works offline</span><span class="star">✦</span><span>50+ currencies</span><span class="star">✦</span><span>10 languages</span><span class="star">✦</span><span>PDF &amp; Excel export</span><span class="star">✦</span><span>No subscriptions</span><span class="star">✦</span>
+  </div>
+  <div class="marquee-track">
+    <span>Voice input</span><span class="star">✦</span><span>Works offline</span><span class="star">✦</span><span>50+ currencies</span><span class="star">✦</span><span>10 languages</span><span class="star">✦</span><span>PDF &amp; Excel export</span><span class="star">✦</span><span>No subscriptions</span><span class="star">✦</span>
+  </div>
+</div>
+
+<!-- ============ Features ============ -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">Everything you need to <mark>stay square</mark></h2>
+      <p class="lede">From the first round of drinks to the final settle-up.</p>
     </div>
 
-    <footer class="footer">
-      <ul class="footer-links">
-        <li><a href="/privacy/">Privacy Policy</a></li>
-        <li><a href="/terms/">Terms &amp; Conditions</a></li>
-        <li><a href="/support/">Support</a></li>
-      </ul>
-      &copy; 2026 TappStudio &middot; <a href="https://tappstudio.in">tappstudio.in</a>
-    </footer>
+    <div class="bento">
+      <article class="tile tile-yellow t-voice">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-mic"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-mic"/></svg></span>
+          <h3 class="h3">Add expenses by voice</h3>
+          <span class="tag">New</span>
+        </div>
+        <p>Say it once. Splitup fills in the rest — amount, title, who paid, the date and the split.</p>
+        <p class="voice-quote">“Dinner at Lodge 90, split with everyone”</p>
+        <div class="voice-arrow"><svg aria-hidden="true"><use href="#i-arrow-down"/></svg></div>
+        <div class="voice-row"><span>Dinner at Lodge · split 3 ways</span><span class="amt">$90</span></div>
+      </article>
+
+      <article class="tile t-offline">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-cloud-off"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-cloud-off"/></svg></span>
+          <h3 class="h3">No signal? No problem.</h3>
+          <span class="tag">New</span>
+        </div>
+        <p>Add expenses and payments anywhere. Balances update instantly and everything auto-syncs the moment you're back online.</p>
+        <div class="tile-chips">
+          <span class="chip"><span class="emoji">✈️</span>Airplane mode</span>
+          <span class="chip"><span class="emoji">🔄</span>Auto-sync</span>
+          <span class="chip"><span class="emoji">🏔️</span>Off-grid trips</span>
+        </div>
+      </article>
+
+      <article class="tile tile-ink t-settle">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-handshake"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-handshake"/></svg></span>
+          <h3 class="h3">Settle up. Zero math.</h3>
+        </div>
+        <p>Splitup works out who pays whom with the fewest payments. You just tap settle.</p>
+      </article>
+
+      <article class="tile t-split">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-percent"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-percent"/></svg></span>
+          <h3 class="h3">Split it your way</h3>
+        </div>
+        <p>Equally, by exact amount, percent or shares — and add more than one payer per expense.</p>
+        <div class="tile-chips">
+          <span class="chip">Equally</span><span class="chip">Amount</span><span class="chip">Percent</span><span class="chip">Shares</span>
+        </div>
+      </article>
+
+      <article class="tile t-tones">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-bell"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-bell"/></svg></span>
+          <h3 class="h3">Reminders in your tone</h3>
+        </div>
+        <p>Friendly, neutral, firm or rude. Nudge without the awkward conversation.</p>
+      </article>
+
+      <article class="tile t-export">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-file"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-file"/></svg></span>
+          <h3 class="h3">Every expense, on record</h3>
+        </div>
+        <p>Full transaction history you can filter by date, amount or member — and export to PDF or Excel when someone asks.</p>
+        <div class="tile-chips"><span class="chip">PDF</span><span class="chip">Excel</span><span class="chip">Share summary</span></div>
+      </article>
+
+      <article class="tile tile-yellow t-world">
+        <svg class="tile-wm" aria-hidden="true"><use href="#i-globe"/></svg>
+        <div class="tile-head">
+          <span class="tile-icon"><svg aria-hidden="true"><use href="#i-globe"/></svg></span>
+          <h3 class="h3">Your language. Your currency.</h3>
+        </div>
+        <p>Split in any currency, in 10 languages, in light or dark mode. The perfect travel companion.</p>
+        <div class="tile-chips">
+          <span class="chip">50+ currencies</span><span class="chip">10 languages</span><span class="chip">Light &amp; dark</span>
+        </div>
+      </article>
+    </div>
   </div>
+</section>
 
-  <script>
-    (function () {
-      var lightbox = document.getElementById('lightbox');
-      var lightboxImg = document.getElementById('lightboxImg');
-      var closeBtn = document.getElementById('lightboxClose');
+<!-- ============ How it works ============ -->
+<section class="sec sec-ink" id="how">
+  <div class="dots"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">Three taps to <mark>square</mark></h2>
+      <p class="lede">No spreadsheets. No "I'll get you back later."</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-n">1</span>
+        <h3 class="h3">Add the expense</h3>
+        <p>Type it or say it. Pick who paid and who's in — Splitup remembers your group.</p>
+        <svg class="step-arrow" aria-hidden="true"><use href="#i-curve"/></svg>
+      </li>
+      <li class="step">
+        <span class="step-n">2</span>
+        <h3 class="h3">Splitup does the math</h3>
+        <p>Shares, percentages, multiple payers, mixed currencies. Balances update the instant you save.</p>
+        <svg class="step-arrow" aria-hidden="true"><use href="#i-curve"/></svg>
+      </li>
+      <li class="step">
+        <span class="step-n">3</span>
+        <h3 class="h3">Settle &amp; remind</h3>
+        <p>See exactly who owes whom, send a nudge in your tone, and mark it settled.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 
-      function open(src, alt) {
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || '';
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+<!-- ============ Gallery ============ -->
+<section class="sec gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">See it in <mark>action</mark></h2>
+      <p class="lede">The real app — not a mockup.</p>
+      <p class="rail-hint">Swipe to browse <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow-right"/></svg></p>
+    </div>
+  </div>
+  <div class="rail" id="rail">
+    <button class="shot" type="button" aria-label="Enlarge: Group dashboard showing total expense, your share and who you get back"><img src="/assets/shots/01-hero.webp" alt="Group dashboard showing total expense, your share and who you get back" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Adding an expense by voice — Splitup listening and transcribing"><img src="/assets/shots/02-voice.webp" alt="Adding an expense by voice — Splitup listening and transcribing" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Adding an expense in airplane mode, queued to sync"><img src="/assets/shots/03-offline.webp" alt="Adding an expense in airplane mode, queued to sync" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Settle up screen with suggested payments between members"><img src="/assets/shots/04-settle.webp" alt="Settle up screen with suggested payments between members" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Split options — equally, by amount, percent or shares"><img src="/assets/shots/05-split.webp" alt="Split options — equally, by amount, percent or shares" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Choosing a reminder tone: friendly, neutral, firm or rude"><img src="/assets/shots/06-reminders.webp" alt="Choosing a reminder tone: friendly, neutral, firm or rude" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Push notifications for new expenses, joins and settle-ups"><img src="/assets/shots/07-notifications.webp" alt="Push notifications for new expenses, joins and settle-ups" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: All your groups — trips, roommates and events in one list"><img src="/assets/shots/08-groups.webp" alt="All your groups — trips, roommates and events in one list" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Exporting the full transaction history to PDF or Excel"><img src="/assets/shots/09-export.webp" alt="Exporting the full transaction history to PDF or Excel" width="660" height="1434" loading="lazy" decoding="async"></button>
+    <button class="shot" type="button" aria-label="Enlarge: Language, currency and light or dark theme settings"><img src="/assets/shots/10-personalize.webp" alt="Language, currency and light or dark theme settings" width="660" height="1434" loading="lazy" decoding="async"></button>
+  </div>
+</section>
 
-      function close() {
-        lightbox.classList.remove('open');
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
+<!-- ============ Reminder tones ============ -->
+<section class="sec sec-yellow" id="tones">
+  <div class="dots"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">Nudge them in <mark>your tone</mark></h2>
+      <p class="lede">Same reminder, four moods. Pick the one that fits the friendship.</p>
+    </div>
+    <div class="tones">
+      <div class="tone">
+        <span class="tone-name"><span class="emoji">😊</span>Friendly</span>
+        <p>“Hey! Whenever you get a sec — $39.16 for the cabin. No rush 💛”</p>
+      </div>
+      <div class="tone">
+        <span class="tone-name"><span class="emoji">🙂</span>Neutral</span>
+        <p>“Reminder: $39.16 outstanding for Yellowstone Park.”</p>
+      </div>
+      <div class="tone">
+        <span class="tone-name"><span class="emoji">😐</span>Firm</span>
+        <p>“$39.16 has been pending since the trip. Please settle it today.”</p>
+      </div>
+      <div class="tone tone-4">
+        <span class="tone-name"><span class="emoji">😤</span>Rude</span>
+        <p>“It's been three weeks. $39.16. You know what you did.”</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      document.querySelectorAll('.screenshot img').forEach(function (img) {
-        img.addEventListener('click', function () {
-          open(img.src, img.alt);
-        });
-      });
+<!-- ============ Pricing ============ -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">Free to join. <mark>One-time</mark> to unlock.</h2>
+      <p class="lede">No subscriptions. No recurring costs. Ever.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-top">
+          <h3 class="h3">Free</h3>
+          <span class="chip">Start here</span>
+        </div>
+        <p class="plan-price">$0<small>Joining a group is always free</small></p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Join any group you're invited to</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited expenses and settle-ups</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Voice input and offline mode</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Full history, all currencies, 10 languages</li>
+        </ul>
+      </div>
+      <div class="plan plan-featured">
+        <div class="plan-top">
+          <h3 class="h3">Unlimited</h3>
+          <span class="chip">One-time</span>
+        </div>
+        <p class="plan-price">Pay once<small>Per group — not per month</small></p>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Create your own groups</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited members per group</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited reminders</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>PDF &amp; Excel export, every feature unlocked</li>
+        </ul>
+        <p class="plan-note">For personal, non-commercial use. A fair-use limit of 30 active groups applies — see the <a href="/terms/">Terms</a>. Business pricing available on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      closeBtn.addEventListener('click', close);
-      lightbox.addEventListener('click', function (e) {
-        if (e.target === lightbox) close();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') close();
-      });
-    })();
-  </script>
+<!-- ============ FAQ ============ -->
+<section class="sec sec-ink" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2">Questions, <mark>answered</mark></h2>
+    </div>
+    <div class="faq">
+      <details class="qa">
+        <summary>How do I add friends to a group?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">Share your group's invite link, or add people by email. They install Splitup, tap the link, and they're in — joining is always free.</div>
+      </details>
+      <details class="qa">
+        <summary>How does voice input work?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">Tap the mic and say something like “Dinner 1200, split equally between Alex and me.” Splitup fills in the amount, title, who paid, the date and the split — you review and save. Voice input is currently English-only.</div>
+      </details>
+      <details class="qa">
+        <summary>Does it really work without internet?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">Yes. Add expenses and payments with no signal at all — balances update instantly on your device and everything syncs automatically the next time you're online.</div>
+      </details>
+      <details class="qa">
+        <summary>How are expenses split?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">Equally by default, and you can switch any expense to exact amounts, percentages or shares. A single expense can also have more than one payer.</div>
+      </details>
+      <details class="qa">
+        <summary>Is there a subscription?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">No. Joining groups is free, and creating your own is a one-time purchase per group — no recurring charges.</div>
+      </details>
+      <details class="qa">
+        <summary>Is my data secure?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">Sign-in is Google and Apple only, so there's no extra password to manage. We don't store any payment information — all settlements happen outside the app. See the <a href="/privacy/">Privacy Policy</a> for the details.</div>
+      </details>
+      <details class="qa">
+        <summary>How do I delete my account?<span class="qa-plus" aria-hidden="true">+</span></summary>
+        <div class="qa-body">Open Settings in the app and tap “Delete Account”. Still stuck? Email us at <a href="mailto:tappstudio.in@gmail.com">tappstudio.in@gmail.com</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Final CTA ============ -->
+<section class="sec sec-yellow cta">
+  <div class="dots"></div>
+  <svg class="doodle" style="left:6%;top:16%;width:54px;height:54px" aria-hidden="true"><use href="#i-burst"/></svg>
+  <svg class="doodle" style="right:8%;top:24%;width:28px;height:28px" aria-hidden="true"><use href="#i-sparkle"/></svg>
+  <svg class="doodle" style="right:16%;bottom:14%;width:20px;height:20px" aria-hidden="true"><use href="#i-sparkle"/></svg>
+  <div class="wrap">
+    <h2 class="h2">Stop doing <mark>the math.</mark></h2>
+    <p class="lede">Splitup is free to start, on iOS and Android.</p>
+    <div class="badges">
+      <a class="badge" href="https://apps.apple.com/app/id6744556329">
+        <svg aria-hidden="true"><use href="#i-apple"/></svg>
+        <span class="badge-txt"><small>Download on the</small><strong>App Store</strong></span>
+      </a>
+      <a class="badge" href="https://play.google.com/store/apps/details?id=in.tappstudio.splitup">
+        <svg aria-hidden="true"><use href="#i-play"/></svg>
+        <span class="badge-txt"><small>Get it on</small><strong>Google Play</strong></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="footer-logo" href="/"><img src="/assets/app-icon.webp" alt="" width="34" height="34">Splitup</a>
+    <ul class="footer-links">
+      <li><a href="/privacy/">Privacy Policy</a></li>
+      <li><a href="/terms/">Terms &amp; Conditions</a></li>
+      <li><a href="/support/">Support</a></li>
+    </ul>
+    <div class="footer-meta">
+      <p class="footer-note">© 2026 TappStudio · <a href="https://tappstudio.in">tappstudio.in</a></p>
+      <p class="footer-note">Made for people who'd rather not talk about money.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightboxImg');
+  var close = document.getElementById('lightboxClose');
+  var last = null;
+
+  function open(src, alt, trigger) {
+    last = trigger;
+    img.src = src;
+    img.alt = alt || '';
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    close.focus();
+  }
+
+  function hide() {
+    box.classList.remove('open');
+    img.src = '';
+    document.body.style.overflow = '';
+    if (last) { last.focus(); last = null; }
+  }
+
+  document.querySelectorAll('.shot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var i = btn.querySelector('img');
+      open(i.currentSrc || i.src, i.alt, btn);
+    });
+  });
+
+  close.addEventListener('click', hide);
+  box.addEventListener('click', function (e) { if (e.target === box) hide(); });
+  document.addEventListener('keydown', function (e) {
+    if (!box.classList.contains('open')) return;
+    if (e.key === 'Escape') hide();
+    // Only the close button is focusable inside the dialog, so keep focus on it.
+    if (e.key === 'Tab') { e.preventDefault(); close.focus(); }
+  });
+
+  // Close the mobile nav menu after tapping a link or clicking away.
+  var menu = document.querySelector('.nav-menu');
+  if (menu) {
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { menu.removeAttribute('open'); });
+    });
+    document.addEventListener('click', function (e) {
+      if (menu.hasAttribute('open') && !menu.contains(e.target)) menu.removeAttribute('open');
+    });
+  }
+})();
+</script>
 </body>
 </html>
