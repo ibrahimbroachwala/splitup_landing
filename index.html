@@ -28,6 +28,10 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-800-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-500-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script>
+// Applied before first paint so a chosen theme never flashes the other one.
+(function(){try{var t=localStorage.getItem('splitup-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Splitup","applicationCategory":"FinanceApplication","operatingSystem":"iOS, Android","description":"Group bill and expense splitting with voice input, offline support and zero-math settle ups.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"TappStudio","url":"https://tappstudio.in"},"url":"https://splitup.tappstudio.in/","downloadUrl":["https://apps.apple.com/app/id6744556329","https://play.google.com/store/apps/details?id=in.tappstudio.splitup"]}
 </script>
@@ -37,7 +41,7 @@
 <g id="s" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></g>
 <symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20c0-3.6 3.2-6.2 7.2-6.2s7.2 2.6 7.2 6.2"/></symbol>
 <symbol id="i-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h14v17l-2.3-1.6-2.4 1.6-2.3-1.6L9.7 20.5 7.3 18.9 5 20.5z"/><path d="M9 8h6M9 12h6"/></symbol>
-<symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 8-2.2 2.2a1.8 1.8 0 0 0 2.5 2.5l1.4-1.3 3.5 3.4a1.7 1.7 0 0 1-2.4 2.4l-.6-.6"/><path d="m14.2 16.6.8.8a1.7 1.7 0 0 0 2.4-2.4M3.5 7.5 7 4.8l4 1.3 2.8-1.4 3.4 1.2 3.3-.4"/><path d="M2 7.2 5 5.6"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.8h15M14.8 5 18.5 8.8l-3.7 3.8"/><path d="M20.5 15.2h-15M9.2 11.4 5.5 15.2l3.7 3.8"/></symbol>
 <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5.5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="18.5" r="2.6"/><path d="m8.3 10.8 7.4-4M8.3 13.2l7.4 4"/></symbol>
 <symbol id="i-groups" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.1"/><path d="M3 19c0-3.2 2.7-5.6 6-5.6s6 2.4 6 5.6"/><circle cx="17.2" cy="8" r="2.5"/><path d="M15.8 13.6c2.7.4 4.7 2.7 4.7 5.4"/></symbol>
 <symbol id="i-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
@@ -54,6 +58,8 @@
 <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v15M6.5 14l5.5 5.5L17.5 14"/></symbol>
 <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M14 6.5l5.5 5.5L14 17.5"/></symbol>
 <symbol id="i-arrow-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12h-15M10 6.5 4.5 12 10 17.5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.8 8.8 0 1 0 11 11Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol>
 <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.53a4.32 4.32 0 0 1 2.06-3.62 4.43 4.43 0 0 0-3.5-1.89c-1.47-.15-2.9.88-3.65.88s-1.92-.86-3.16-.84a4.65 4.65 0 0 0-3.91 2.39c-1.68 2.91-.43 7.2 1.2 9.56.8 1.15 1.74 2.44 2.98 2.4 1.2-.05 1.65-.78 3.1-.78s1.86.78 3.13.75c1.29-.02 2.11-1.17 2.9-2.33a10.3 10.3 0 0 0 1.31-2.7 4.18 4.18 0 0 1-2.46-3.82ZM14.7 5.4A4.25 4.25 0 0 0 15.68 2a4.33 4.33 0 0 0-2.85 1.47 4.04 4.04 0 0 0-1 3.28 3.58 3.58 0 0 0 2.87-1.35Z"/></symbol>
 <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M3.7 2.3a1.6 1.6 0 0 0-.7 1.35v16.7c0 .56.27 1.06.7 1.35l9.06-9.7L3.7 2.3Z"/><path d="m15.6 9.02-2.84 3.04 2.84 3.04 3.6-2.02c.86-.48.86-1.56 0-2.04l-3.6-2.02Z"/><path d="m13.9 13.2-9.1 9.74c.4.2.9.18 1.36-.08l9.44-5.3-1.7-4.36Z" opacity=".85"/><path d="M4.8 1.06c-.46-.26-.96-.28-1.36-.08l9.1 9.74 1.7-4.36L4.8 1.06Z" opacity=".7"/></symbol>
@@ -76,6 +82,10 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
+    <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">
+      <svg class="i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+    </button>
     <a class="btn btn-yellow nav-cta" href="#get">Get the app</a>
     <details class="nav-menu">
       <summary aria-label="Menu"><svg width="24" height="24" aria-hidden="true"><use href="#i-menu"/></svg></summary>
@@ -357,8 +367,8 @@
 <section class="sec" id="pricing">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="h2">Free to join. <mark>One-time</mark> to unlock.</h2>
-      <p class="lede">No subscriptions. No recurring costs. Ever.</p>
+      <h2 class="h2">Free to start. <mark>One-time</mark> to grow.</h2>
+      <p class="lede">Create your first group free, join as many as you like. No subscriptions, ever.</p>
     </div>
     <div class="plans">
       <div class="plan">
@@ -366,34 +376,48 @@
           <h3 class="h3">Free</h3>
           <span class="chip">Start here</span>
         </div>
-        <p class="plan-price">$0<small>Joining a group is always free</small></p>
+        <p class="plan-price">$0<small>No card, no trial, no expiry</small></p>
         <ul>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Join any group you're invited to</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited expenses and settle-ups</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Voice input and offline mode</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Full history, all currencies, 10 languages</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Create <strong>1 group</strong> of your own</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Join <strong>unlimited</strong> groups you're invited to</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited expenses, members and settle-ups</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Every feature included</li>
         </ul>
       </div>
+
       <div class="plan plan-featured">
         <div class="plan-top">
-          <h3 class="h3">Unlimited</h3>
+          <h3 class="h3">Need more groups?</h3>
           <span class="chip">One-time</span>
         </div>
-        <p class="plan-price">Pay once<small>Per group — not per month</small></p>
-        <ul>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Create your own groups</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited members per group</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Unlimited reminders</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>PDF &amp; Excel export, every feature unlocked</li>
-        </ul>
-        <p class="plan-note">For personal, non-commercial use. A fair-use limit of 30 active groups applies — see the <a href="/terms/">Terms</a>. Business pricing available on request.</p>
+        <p class="plan-price">Pay once<small>Buy a pack, keep it forever — never a subscription</small></p>
+        <div class="packs">
+          <div class="pack">
+            <span class="pack-n">1</span>
+            <span class="pack-t">1 group<small>One more trip or household</small></span>
+          </div>
+          <div class="pack">
+            <span class="pack-n">5</span>
+            <span class="pack-t">5 groups<small>For people running a few at once</small></span>
+          </div>
+          <div class="pack">
+            <span class="pack-n inf">&infin;</span>
+            <span class="pack-t">Unlimited groups<small>Create as many as you like</small></span>
+          </div>
+        </div>
+        <p class="plan-note">For personal, non-commercial use. Unlimited is subject to a fair-use limit of 30 active groups — see the <a href="/terms/">Terms</a>. Business pricing available on request.</p>
       </div>
     </div>
+
+    <p class="all-in">
+      <svg aria-hidden="true"><use href="#i-check"/></svg>
+      Every feature — voice input, offline mode, reminders, exports — is unlocked in every group, free or paid. Packs only add how many groups you can create.
+    </p>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="sec sec-ink" id="faq">
+<section class="sec sec-tint" id="faq">
   <div class="wrap">
     <div class="sec-head">
       <h2 class="h2">Questions, <mark>answered</mark></h2>
@@ -417,7 +441,7 @@
       </details>
       <details class="qa">
         <summary>Is there a subscription?<span class="qa-plus" aria-hidden="true">+</span></summary>
-        <div class="qa-body">No. Joining groups is free, and creating your own is a one-time purchase per group — no recurring charges.</div>
+        <div class="qa-body">No, never. You can create one group and join unlimited groups for free. If you need to create more, you buy a one-time pack of 1, 5 or unlimited groups — pay once and keep it. Every feature is included in every group either way.</div>
       </details>
       <details class="qa">
         <summary>Is my data secure?<span class="qa-plus" aria-hidden="true">+</span></summary>
@@ -513,6 +537,19 @@
     // Only the close button is focusable inside the dialog, so keep focus on it.
     if (e.key === 'Tab') { e.preventDefault(); close.focus(); }
   });
+
+  // Theme toggle. Persists the choice; with nothing stored the page follows
+  // the OS via prefers-color-scheme.
+  var toggle = document.getElementById('themeToggle');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var current = document.documentElement.dataset.theme || (dark ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('splitup-theme', next); } catch (e) {}
+    });
+  }
 
   // Close the mobile nav menu after tapping a link or clicking away.
   var menu = document.querySelector('.nav-menu');

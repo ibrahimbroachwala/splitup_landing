@@ -14,10 +14,15 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-800-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/poppins-500-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script>
+(function(){try{var t=localStorage.getItem('splitup-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <symbol id="i-arrow-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12h-15M10 6.5 4.5 12 10 17.5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.8 8.8 0 1 0 11 11Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></symbol>
 </defs></svg>
 <nav class="nav">
   <div class="wrap nav-bar">
@@ -26,6 +31,10 @@
       <li><a href="/privacy/">Privacy</a></li>
       <li><a href="/terms/">Terms</a></li>
     </ul>
+    <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">
+      <svg class="i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+    </button>
     <a class="btn btn-yellow nav-cta" href="/#get">Get the app</a>
   </div>
 </nav>
@@ -105,5 +114,18 @@
     </div>
   </div>
 </footer>
+<script>
+(function () {
+  var toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', function () {
+    var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = document.documentElement.dataset.theme || (dark ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('splitup-theme', next); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>

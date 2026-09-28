@@ -24,10 +24,12 @@
 :root {
   /* AppColors */
   --yellow: #ffdb1f;
+  --yellow-soft: #ffeb8f;        /* gentler yellow for large fills and open states */
   --yellow-container: #fff5cc;
   --surface: #fff9f0;
   --card: #ffffff;
   --ink: #1a1a1a;
+  --ink-soft: #33302b;           /* borders: reads as ink without the hard black */
   --text-2: #666666;
   --outline: #e0e0e0;
   --green: #4caf50;
@@ -36,18 +38,25 @@
   /* AppRadii */
   --r-sm: 4px; --r-md: 8px; --r-lg: 16px; --r-pill: 32px;
 
-  /* Page palette (remapped wholesale in dark mode) */
+  /* Page palette (remapped wholesale for dark) */
   --bg: var(--surface);
   --fg: var(--ink);
   --fg-2: var(--text-2);
   --panel: var(--card);
-  --line: var(--ink);
-  --shadow-col: var(--ink);
+  --line: var(--ink-soft);
+  --shadow-col: rgba(26, 26, 26, .34);
+
+  /* Derived per-theme values, so components never need their own dark rule
+     (which would otherwise have to be duplicated for the toggle). */
+  --mark-bg: var(--ink);
+  --mark-fg: var(--yellow);
+  --dot-col: rgba(26, 26, 26, .09);
+  --doodle-col: var(--ink);
 
   /* Neo primitives — mobile scale; stepped up on wider screens */
-  --w-border: 2.5px;
-  --w-shadow: 4px 4px 0;
-  --w-shadow-lg: 5px 5px 0;
+  --w-border: 2px;
+  --w-shadow: 3px 3px 0;
+  --w-shadow-lg: 4px 4px 0;
   --dot: 14px;
   --tilt: 2deg;
 
@@ -58,27 +67,46 @@
 
 @media (min-width: 720px) {
   :root {
-    --w-border: 3px;
-    --w-shadow: 6px 6px 0;
-    --w-shadow-lg: 8px 8px 0;
+    --w-border: 2.5px;
+    --w-shadow: 4px 4px 0;
+    --w-shadow-lg: 6px 6px 0;
     --dot: 18px;
-    --tilt: 4deg;
+    --tilt: 3deg;
   }
 }
 
-/* Dark mode: surfaces darken, borders go near-black, and every hard shadow
-   flips from ink to yellow — the same inversion base.css uses on .bg-ink. */
+/* Dark palette. Declared twice on purpose: once for the system preference
+   (skipped when the visitor has explicitly chosen light) and once for the
+   toggle's data-theme attribute. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #2a2a2a;
-    --fg: #ffffff;
-    --fg-2: #cccccc;
+    --fg: #f2f2f2;
+    --fg-2: #b8b8b8;
     --panel: #333333;
-    --line: #111111;
-    --shadow-col: var(--yellow);
+    --line: #4a4a4a;
+    --shadow-col: rgba(255, 219, 31, .40);
     --yellow-container: #3a3a3a;
     --outline: #424242;
+    --mark-bg: var(--yellow);
+    --mark-fg: var(--ink);
+    --dot-col: rgba(255, 219, 31, .09);
+    --doodle-col: var(--yellow);
   }
+}
+:root[data-theme="dark"] {
+  --bg: #2a2a2a;
+  --fg: #f2f2f2;
+  --fg-2: #b8b8b8;
+  --panel: #333333;
+  --line: #4a4a4a;
+  --shadow-col: rgba(255, 219, 31, .40);
+  --yellow-container: #3a3a3a;
+  --outline: #424242;
+  --mark-bg: var(--yellow);
+  --mark-fg: var(--ink);
+  --dot-col: rgba(255, 219, 31, .09);
+  --doodle-col: var(--yellow);
 }
 
 /* ---------- Reset ---------- */
@@ -113,7 +141,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   outline-offset: 2px;
   border-radius: var(--r-sm);
 }
-@media (prefers-color-scheme: dark) { :focus-visible { outline-color: var(--yellow); } }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px;
@@ -136,8 +163,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (min-width: 720px) { .sec { padding-block: 96px; } }
 @media (min-width: 1024px) { .sec { padding-block: 120px; } }
 
-.sec-yellow { background: var(--yellow); color: var(--ink); --line: var(--ink); --shadow-col: var(--ink); --fg: var(--ink); --fg-2: rgba(26,26,26,.72); }
-.sec-ink { background: var(--ink); color: #fff; --line: #000; --shadow-col: var(--yellow); --fg: #fff; --fg-2: rgba(255,255,255,.72); --panel: #242424; }
+.sec-yellow { background: var(--yellow); color: var(--ink); --line: var(--ink-soft); --shadow-col: rgba(26,26,26,.30); --fg: var(--ink); --fg-2: rgba(26,26,26,.72);
+  --mark-bg: var(--ink); --mark-fg: var(--yellow); --dot-col: rgba(26,26,26,.09); --doodle-col: var(--ink); }
+.sec-tint { background: var(--yellow-container); }
+.sec-ink { background: var(--ink); color: #f2f2f2; --line: #3d3d3d; --shadow-col: rgba(255,219,31,.34); --fg: #f2f2f2; --fg-2: rgba(255,255,255,.66); --panel: #242424;
+  --mark-bg: var(--yellow); --mark-fg: var(--ink); --dot-col: rgba(255,219,31,.10); --doodle-col: var(--yellow); }
 
 /* ---------- Type ---------- */
 .h1 {
@@ -162,15 +192,9 @@ mark {
   padding: 0 .16em .02em;
   margin: .04em 0 0 -.04em;
   border-radius: 10px;
-  background: var(--ink);
-  color: var(--yellow);
+  background: var(--mark-bg);
+  color: var(--mark-fg);
   transform: rotate(-2deg);
-}
-.sec-yellow mark { background: var(--ink); color: var(--yellow); }
-.sec-ink mark { background: var(--yellow); color: var(--ink); }
-@media (prefers-color-scheme: dark) {
-  mark { background: var(--yellow); color: var(--ink); }
-  .sec-yellow mark { background: var(--ink); color: var(--yellow); }
 }
 
 .sec-head { max-width: 640px; margin-bottom: 36px; }
@@ -180,7 +204,7 @@ mark {
 /* ---------- Texture ---------- */
 .dots {
   position: absolute; inset: 0;
-  background-image: radial-gradient(var(--dot-col, rgba(26,26,26,.10)) 1.3px, transparent 1.5px);
+  background-image: radial-gradient(var(--dot-col) 1.3px, transparent 1.5px);
   background-size: var(--dot) var(--dot);
   background-position: calc(var(--dot) / 2) calc(var(--dot) / 2);
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 85%);
@@ -188,13 +212,8 @@ mark {
   pointer-events: none;
   z-index: 0;
 }
-.sec-ink .dots { --dot-col: rgba(255,219,31,.11); }
-@media (prefers-color-scheme: dark) { .dots { --dot-col: rgba(255,219,31,.09); } }
-.sec-yellow .dots { --dot-col: rgba(26,26,26,.10); }
 
-.doodle { position: absolute; color: var(--doodle, var(--ink)); overflow: visible; pointer-events: none; z-index: 2; }
-.sec-ink .doodle { --doodle: var(--yellow); }
-@media (prefers-color-scheme: dark) { .doodle { --doodle: var(--yellow); } .sec-yellow .doodle { --doodle: var(--ink); } }
+.doodle { position: absolute; color: var(--doodle-col); overflow: visible; pointer-events: none; z-index: 2; }
 
 /* ---------- Neo primitives ---------- */
 .neo {
@@ -257,16 +276,14 @@ mark {
   gap: 6px;
   padding: 5px 13px 4px;
   border-radius: var(--r-pill);
-  background: var(--ink);
-  color: var(--yellow);
+  background: var(--mark-bg);
+  color: var(--mark-fg);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1.6px;
   text-transform: uppercase;
   transform: rotate(-3deg);
 }
-.sec-ink .kicker { background: var(--yellow); color: var(--ink); }
-@media (prefers-color-scheme: dark) { .kicker { background: var(--yellow); color: var(--ink); } }
 
 .chip {
   display: inline-flex;
@@ -326,6 +343,32 @@ mark {
 @media (hover: hover) { .nav-links a:hover { color: var(--fg); background: var(--yellow-container); } }
 
 .nav-cta { min-height: 44px; padding: 10px 18px; font-size: 15px; }
+
+/* Theme toggle. Both icons are in the DOM; CSS shows the one for the theme
+   you'd switch TO, so the button always previews its own effect. */
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; flex: none;
+  border: var(--w-border) solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--panel);
+  color: var(--fg);
+  box-shadow: 2px 2px 0 var(--shadow-col);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.theme-toggle svg { width: 21px; height: 21px; }
+@media (hover: hover) { .theme-toggle:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--shadow-col); } }
+.theme-toggle:active { transform: translate(2px,2px); box-shadow: none; }
+.theme-toggle .i-moon { display: block; }
+.theme-toggle .i-sun { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
+}
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+:root[data-theme="light"] .theme-toggle .i-moon { display: block; }
+:root[data-theme="light"] .theme-toggle .i-sun { display: none; }
 
 /* Mobile disclosure menu — native <details>, no JS */
 .nav-menu { position: relative; }
@@ -405,8 +448,8 @@ mark {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 56px;
-  padding: 10px 20px;
+  min-height: 62px;
+  padding: 12px 24px;
   border: var(--w-border) solid var(--ink);
   border-radius: var(--r-pill);
   background: var(--ink);
@@ -414,13 +457,19 @@ mark {
   box-shadow: var(--w-shadow) rgba(26,26,26,.35);
   transition: transform .12s ease, box-shadow .12s ease;
 }
-.badge svg { width: 24px; height: 24px; flex: none; fill: currentColor; }
+.badge svg { width: 28px; height: 28px; flex: none; fill: currentColor; }
 .badge-txt { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
-.badge-txt small { font-size: 10.5px; font-weight: 500; opacity: .8; letter-spacing: .04em; }
-.badge-txt strong { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.badge-txt small { font-size: 11.5px; font-weight: 500; opacity: .8; letter-spacing: .04em; }
+.badge-txt strong { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
 @media (hover: hover) { .badge:hover { transform: translate(-2px,-2px); box-shadow: var(--w-shadow-lg) rgba(26,26,26,.35); } }
 .badge:active { transform: translate(3px,3px); box-shadow: none; }
 @media (max-width: 379px) { .badge { width: 100%; justify-content: center; } }
+@media (min-width: 720px) {
+  .badge { min-height: 70px; padding: 14px 30px; gap: 12px; }
+  .badge svg { width: 32px; height: 32px; }
+  .badge-txt small { font-size: 12.5px; }
+  .badge-txt strong { font-size: 20px; }
+}
 
 .hero-stage {
   position: relative;
@@ -480,7 +529,8 @@ mark {
   --a-wm: rgba(26, 26, 26, .08);
 }
 @media (prefers-color-scheme: dark) {
-  .screen, .pop {
+  :root:not([data-theme="light"]) .screen,
+  :root:not([data-theme="light"]) .pop {
     --a-bg: #2a2a2a;
     --a-fg: #ffffff;
     --a-fg2: #cccccc;
@@ -490,6 +540,17 @@ mark {
     --a-cur: #ffdb1f;
     --a-wm: rgba(255, 219, 31, .13);
   }
+}
+:root[data-theme="dark"] .screen,
+:root[data-theme="dark"] .pop {
+    --a-bg: #2a2a2a;
+    --a-fg: #ffffff;
+    --a-fg2: #cccccc;
+    --a-cont: #3a3a3a;
+    --a-card: #333333;
+    --a-line: #111111;
+    --a-cur: #ffdb1f;
+    --a-wm: rgba(255, 219, 31, .13);
 }
 
 .screen {
@@ -676,9 +737,9 @@ mark {
 }
 .tile > * { position: relative; z-index: 1; }
 .tile p { color: var(--fg-2); font-size: 15.5px; }
-.tile-yellow { background: var(--yellow); color: var(--ink); --fg-2: rgba(26,26,26,.72); border-color: var(--ink); }
-.tile-ink { background: var(--ink); color: #fff; --fg-2: rgba(255,255,255,.7); border-color: var(--ink); }
-.tile-ink { box-shadow: var(--w-shadow) var(--yellow); }
+.tile-yellow { background: var(--yellow-soft); color: var(--ink); --fg: var(--ink); --fg-2: rgba(26,26,26,.7); border-color: var(--ink-soft); }
+.tile-ink { background: #2b2b2b; color: #f2f2f2; --fg: #f2f2f2; --fg-2: rgba(255,255,255,.66); border-color: #3d3d3d; }
+.tile-ink { box-shadow: var(--w-shadow) rgba(255,219,31,.34); }
 
 /* Oversized watermark icon, echoing the app's stat-card watermarks */
 .tile-wm {
@@ -699,9 +760,9 @@ mark {
   border: 2px solid var(--line); border-radius: 12px;
   background: var(--yellow);
   color: var(--ink);
-  box-shadow: 3px 3px 0 var(--line);
+  box-shadow: 2px 2px 0 var(--line);
 }
-.tile-ink .tile-icon { border-color: var(--yellow); box-shadow: 3px 3px 0 var(--yellow); }
+.tile-ink .tile-icon { border-color: #3d3d3d; box-shadow: 2px 2px 0 rgba(255,219,31,.4); }
 .tile-icon svg { width: 24px; height: 24px; }
 .tag {
   padding: 3px 10px;
@@ -713,8 +774,8 @@ mark {
 .tile-ink .tag { background: var(--yellow); color: var(--ink); }
 
 .tile-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
-.tile-ink .chip { background: #3a3a3a; border-color: var(--yellow); color: #fff; }
-.tile-yellow .chip { background: var(--surface); border-color: var(--ink); }
+.tile-ink .chip { background: #3a3a3a; border-color: #555; color: #f2f2f2; }
+.tile-yellow .chip { background: rgba(255,255,255,.72); border-color: var(--ink-soft); color: var(--ink); }
 
 /* Voice tile: the spoken phrase → the filled-in expense */
 .voice-quote {
@@ -886,7 +947,39 @@ mark {
    Pricing
    ============================================================ */
 .plans { display: grid; gap: 20px; }
-@media (min-width: 760px) { .plans { grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; } }
+@media (min-width: 860px) { .plans { grid-template-columns: 1fr 1.15fr; gap: 24px; align-items: stretch; } }
+
+/* One-time group packs */
+.packs { display: grid; gap: 12px; }
+.pack {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px;
+  border: 2px solid var(--ink-soft);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,.66);
+  color: var(--ink);
+}
+.pack-n {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 44px; flex: none;
+  border: 2px solid var(--ink-soft); border-radius: var(--r-md);
+  background: var(--yellow);
+  font-size: 17px; font-weight: 800; letter-spacing: -.02em;
+}
+.pack-n.inf { font-size: 24px; }
+.pack-t { font-size: 16px; font-weight: 700; line-height: 1.25; }
+.pack-t small { display: block; font-size: 13.5px; font-weight: 500; color: rgba(26,26,26,.66); }
+
+.all-in {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-top: 20px; padding: 18px 22px;
+  border: var(--w-border) solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--panel);
+  box-shadow: var(--w-shadow) var(--shadow-col);
+  font-size: 16px; font-weight: 600;
+}
+.all-in svg { width: 24px; height: 24px; flex: none; color: var(--green); }
 
 .plan {
   display: flex; flex-direction: column; gap: 16px;
@@ -903,7 +996,7 @@ mark {
 .plan li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; font-weight: 500; }
 .plan li svg { width: 21px; height: 21px; flex: none; margin-top: 1px; }
 .plan-note { font-size: 13px; color: var(--fg-2); }
-.plan-featured { background: var(--yellow); color: var(--ink); border-color: var(--ink); --fg-2: rgba(26,26,26,.7); }
+.plan-featured { background: var(--yellow-soft); color: var(--ink); --fg: var(--ink); border-color: var(--ink-soft); --fg-2: rgba(26,26,26,.68); }
 
 /* ============================================================
    FAQ — native <details>, zero JS
@@ -934,15 +1027,20 @@ mark {
   font-size: 19px; font-weight: 700; line-height: 1;
   transition: transform .18s ease;
 }
-.qa[open] > summary { background: var(--yellow); color: var(--ink); }
-.qa[open] .qa-plus { transform: rotate(45deg); background: var(--ink); color: var(--yellow); border-color: var(--ink); }
-.qa-body { padding: 0 22px 20px; color: var(--fg-2); font-size: 15.5px; line-height: 1.6; }
+.qa-body { border-top: 1.5px solid var(--outline); padding-top: 16px; margin: 0 22px; }
+.qa[open] > summary { background: var(--yellow-container); }
+.qa[open] .qa-plus { transform: rotate(45deg); }
+.qa-body { padding: 16px 0 20px; color: var(--fg-2); font-size: 15.5px; line-height: 1.6; }
 .qa-body a { font-weight: 600; text-decoration: underline; }
 
 /* ============================================================
    Final CTA + footer
    ============================================================ */
 .cta { text-align: center; }
+/* Doodles are decorative; on mobile they sat on top of the headline, so they
+   only appear once there's room beside it. */
+.cta .doodle { display: none; }
+@media (min-width: 860px) { .cta .doodle { display: block; } }
 .cta .wrap { position: relative; z-index: 3; }
 .cta .h2 { margin-bottom: 16px; }
 .cta .lede { max-width: 30ch; margin-inline: auto; }
@@ -1052,14 +1150,21 @@ mark {
     transform-origin: top center;
     transform: translateX(-50%) scale(.86) rotate(-2deg);
   }
+  .hero-pop .stat { padding: 13px 12px 11px; }
+  .hero-pop .stat .cap { font-size: 11.5px; letter-spacing: .2px; }
 }
 
-/* Below ~360px the wordmark — which can't shrink past its text — slid under the
-   CTA. Drop to the icon alone; the logo still links home. 375px keeps the text. */
-@media (max-width: 359px) {
+/* The nav carries logo + theme toggle + CTA + menu. Below 480px that's wider
+   than the viewport, and the wordmark can't shrink past its own text — so it
+   drops out first and the icon carries the brand (still linking home). The
+   sticky "Get the app" is kept: it's the most valuable control on the bar. */
+@media (max-width: 479px) {
   .nav-logo { font-size: 0; gap: 0; }
-  .nav-logo img { width: 36px; height: 36px; }
-  .nav-cta { padding: 10px 14px; font-size: 14px; }
+  .nav-logo img { width: 38px; height: 38px; }
+  .nav-cta { padding: 10px 15px; font-size: 14.5px; }
+  .theme-toggle { width: 42px; height: 42px; }
+  .nav-menu > summary { width: 42px; height: 42px; }
+  .nav-bar { gap: 8px; }
 }
 
 @media print {

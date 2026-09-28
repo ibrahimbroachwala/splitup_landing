@@ -40,12 +40,48 @@ the app and the store screenshots drift apart.
 Key conventions:
 
 - Everything is authored **mobile-first**; media queries only add complexity upward.
-- `--w-border` / `--w-shadow` step up at 720px so cards don't look clumsy on phones.
-- In dark mode every hard shadow flips from ink to yellow.
+- `--w-border` (2 / 2.5px) and `--w-shadow` (3 / 4px) step up at 720px. Shadows are
+  hard-edged but **translucent** (`--shadow-col`), which keeps the neo-brutalist
+  look without the eye strain of solid black offsets.
+- Borders use `--ink-soft`, not pure `--ink`; large fills use `--yellow-soft`.
+- In dark mode hard shadows flip from ink to a translucent yellow.
+- Per-theme values are **derived tokens** (`--mark-bg`, `--mark-fg`, `--dot-col`,
+  `--doodle-col`) set once per theme. Components read them and never declare their
+  own dark rule — otherwise each would need duplicating for the theme toggle.
+- Coloured tiles (`.tile-yellow`, `.tile-ink`, `.plan-featured`) must pin `--fg`,
+  not just `color`. `.chip` reads `--fg`, so a tile that sets only `color` leaves
+  chips inheriting the page's text colour and they vanish in the opposite theme.
 - The hero phone is a live HTML port of the app UI (`store/screenshots_v2/src/app-ui.css`),
   authored at true app scale (440pt) and transform-scaled via `--ps`. It carries its
   own `--a-*` theme vars so it renders the app's light theme on a light page and its
   dark theme on a dark one, independent of the page palette.
+
+## Theme toggle
+
+The nav has a light/dark toggle. It sets `data-theme` on `<html>` and stores the
+choice in `localStorage` under `splitup-theme`. With nothing stored the page follows
+the OS via `prefers-color-scheme`.
+
+Every dark rule is therefore declared **twice** — once under
+`@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) ... }` and once
+under `:root[data-theme="dark"]`. Keep both in sync, or prefer adding a derived token
+to the two root blocks instead (see above).
+
+A tiny inline script in each page's `<head>` applies the stored theme before first
+paint, so a chosen theme never flashes the other one. It must stay in `<head>`,
+before the stylesheet's first use.
+
+## Pricing model
+
+The site states: **create 1 group free, join unlimited groups free**, and buy more
+groups you can create via **one-time** packs of **1 / 5 / unlimited**. Every feature
+is unlocked in every group, free or paid — packs only change how many groups you can
+create.
+
+> ⚠️ `/terms/` still describes Unlimited as a *"subscription package"* and applies a
+> 30-active-group fair-use cap to it. That wording predates the one-time model and
+> contradicts the landing page. It's legal copy, so it wasn't changed here — get it
+> reviewed and updated.
 
 ## Regenerating assets
 
