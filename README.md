@@ -51,6 +51,10 @@ Key conventions:
 - Coloured tiles (`.tile-yellow`, `.tile-ink`, `.plan-featured`) must pin `--fg`,
   not just `color`. `.chip` reads `--fg`, so a tile that sets only `color` leaves
   chips inheriting the page's text colour and they vanish in the opposite theme.
+- A `display: flex` element must not hold bare text mixed with inline tags. Each
+  contiguous text run becomes its own anonymous flex item, so it wraps separately
+  and picks up the container's `gap`. Wrap the whole text in one `<span>` (see
+  `.plan li`, which has exactly two children: the icon and a span).
 - The hero phone is a live HTML port of the app UI (`store/screenshots_v2/src/app-ui.css`),
   authored at true app scale (440pt) and transform-scaled via `--ps`. It carries its
   own `--a-*` theme vars so it renders the app's light theme on a light page and its
