@@ -43,7 +43,7 @@
   <a class="back-link" href="/"><svg aria-hidden="true"><use href="#i-arrow-back"/></svg>Back to Splitup</a>
   <header class="legal-hero">
     <h1 class="h2">Privacy Policy for Splitup</h1>
-    <p class="effective-date">Effective Date: 12th April, 2025</p>
+    <p class="effective-date">Effective Date: 28th September, 2026</p>
   </header>
   <article class="legal">
       <p><strong>Splitup</strong> ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our mobile application, <strong>Splitup</strong> (the "App").</p>
@@ -53,22 +53,45 @@
       <h3>1. Authentication</h3>
       <ul>
         <li>We use Google Sign-In and Apple Sign-In for authentication purposes only</li>
-        <li>We do not store or collect any additional personal information beyond what is provided through these authentication services</li>
-        <li>Basic profile information (name and email) from your Google or Apple account is used solely for account identification</li>
+        <li>Basic profile information (name and email) from your Google or Apple account is used for account identification</li>
+        <li>We do not receive or store your Google or Apple password</li>
       </ul>
 
       <h3>2. App Data</h3>
       <ul>
         <li><strong>Expense Information:</strong> Information you input about expenses, bills, and payments</li>
-        <li><strong>Group Information:</strong> Names of expense groups you create</li>
+        <li><strong>Group Information:</strong> Names of expense groups you create and the names of the members you add to them</li>
+        <li><strong>Group Images:</strong> If you choose an image for a group, it is uploaded to our storage and can be viewed by anyone who has its link</li>
       </ul>
       <p>This information is stored securely and used only to provide the expense splitting functionality.</p>
       <p>For accounts on the Unlimited subscription package, we track the number of active groups associated with your account in order to apply a fair-use limit of 30 active groups, intended to prevent commercial use of a personal subscription. See our <a href="/terms/">Terms &amp; Conditions</a> for details.</p>
 
-      <h3>3. Device Information</h3>
+      <h3>3. Voice Input</h3>
+      <p>Voice input is optional. You can add an expense by speaking instead of typing, for example "Dinner 1200, split equally between Sahil and me."</p>
       <ul>
-        <li>Basic device information (device type and app version) for troubleshooting</li>
-        <li>No personal identifiers are collected from your device</li>
+        <li><strong>When the microphone is on:</strong> Only while the voice screen is open after you tap the microphone button. Listening stops when you tap Done, when you stop speaking, or when you close the screen.</li>
+        <li><strong>How speech becomes text:</strong> Your device's built-in speech recognition service converts your speech to text. This is Apple's speech recognition on iOS and the speech recognition service on your Android device (usually provided by Google). Your device may send the audio to that provider to be transcribed. This is handled under Apple's or Google's own privacy policy.</li>
+        <li><strong>What we keep:</strong> Splitup does not record, store, or upload your voice audio. The text of what you said is used on your device only to fill in the expense form. It is not sent to our servers or to our analytics provider. Only the expense you review and choose to save is stored, like any other expense.</li>
+        <li><strong>Usage information:</strong> We record basic events about the voice feature, such as whether it was used and which fields were filled in, to improve it. These events never contain your audio, the text of what you said, or anyone's name.</li>
+        <li><strong>Permissions:</strong> Voice input needs microphone access and, on iOS, speech recognition access. You can turn these off at any time in your device settings. The rest of the App works without them.</li>
+      </ul>
+
+      <h3>4. Analytics and Diagnostics</h3>
+      <ul>
+        <li>We use PostHog to understand how the App is used and to fix problems. It receives app usage events (such as screens viewed and features used), your account ID and your email address, so that events can be linked to your account</li>
+        <li>PostHog may also record session replays: recordings of your interactions with the App's screens. These can include expense and group information shown on screen. The text of what you say using voice input is hidden from these recordings</li>
+        <li>Basic device information (device type, operating system and app version) is collected for troubleshooting</li>
+      </ul>
+
+      <h3>5. Notifications</h3>
+      <ul>
+        <li>If you allow notifications, a push notification token from Firebase Cloud Messaging is stored with your account so we can send you reminders and updates about your groups</li>
+      </ul>
+
+      <h3>6. Purchases</h3>
+      <ul>
+        <li>Payments are processed by the Apple App Store or Google Play. We do not receive your card or payment details</li>
+        <li>We use RevenueCat to manage subscriptions and purchases. It receives your account ID and your purchase history so your purchases can be restored on your devices</li>
       </ul>
 
       <h2>How We Use Your Information</h2>
@@ -76,27 +99,36 @@
       <ol>
         <li>Authenticate your account</li>
         <li>Provide expense splitting functionality</li>
+        <li>Send notifications you have allowed</li>
+        <li>Manage your purchases and subscriptions</li>
         <li>Maintain and improve the App</li>
         <li>Respond to your support requests</li>
       </ol>
 
       <h2>Data Storage and Security</h2>
       <ul>
-        <li>All expense data is stored securely on our servers</li>
+        <li>All expense data is stored securely on our servers, hosted by Supabase</li>
         <li>We implement industry-standard security measures to protect your information</li>
-        <li>We do not sell, trade, or share your information with third parties</li>
+        <li>We do not sell or trade your information. We share it only with the service providers listed below, and only as needed to run the App</li>
       </ul>
 
       <h2>Third-Party Services</h2>
       <p>The App uses the following third-party services:</p>
       <ul>
-        <li>Google Sign-In</li>
-        <li>Apple Sign-In</li>
+        <li>Google Sign-In and Apple Sign-In (authentication)</li>
+        <li>Supabase (database and file hosting)</li>
+        <li>PostHog (analytics and session replay)</li>
+        <li>Firebase Cloud Messaging by Google (push notifications)</li>
+        <li>RevenueCat (purchase and subscription management)</li>
+        <li>Apple and Google speech recognition (voice input, through your device's operating system)</li>
       </ul>
       <p>These services have their own privacy policies, which we encourage you to review:</p>
       <ul>
         <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
         <li><a href="https://www.apple.com/legal/privacy">Apple Privacy Policy</a></li>
+        <li><a href="https://supabase.com/privacy">Supabase Privacy Policy</a></li>
+        <li><a href="https://posthog.com/privacy">PostHog Privacy Policy</a></li>
+        <li><a href="https://www.revenuecat.com/privacy">RevenueCat Privacy Policy</a></li>
       </ul>
 
       <h2>Data Deletion</h2>
@@ -106,7 +138,7 @@
         <li>Selecting "Delete Account"</li>
         <li>Confirming the deletion</li>
       </ol>
-      <p>Upon deletion, all your expense data and account information will be permanently removed from our servers.</p>
+      <p>Upon deletion, all your expense data and account information will be permanently removed from our servers. To request removal of analytics data linked to your account, contact us at the email below.</p>
 
       <h2>Children's Privacy</h2>
       <p>The App is not intended for use by individuals under the age of 13. We do not knowingly collect any personal information from children.</p>
