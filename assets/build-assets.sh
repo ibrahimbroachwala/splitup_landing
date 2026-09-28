@@ -1,6 +1,6 @@
 #!/bin/sh
 # Regenerates the site's derived assets. There is no build step for the site
-# itself — this is a one-off you re-run when the source art changes.
+# itself. Re-run this whenever the source art changes.
 #
 #   sh assets/build-assets.sh
 #
