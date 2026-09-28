@@ -267,8 +267,6 @@ mark {
   transform: rotate(var(--r, calc(var(--tilt) * -1)));
 }
 .sticker .emoji { font-size: 1.25em; line-height: 1; }
-.sticker-yellow { background: var(--yellow); }
-.sticker-ink { background: var(--ink); color: #fff; }
 
 .kicker {
   display: inline-flex;
