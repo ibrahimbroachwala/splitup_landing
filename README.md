@@ -110,12 +110,16 @@ Page titles use `Brand | Page` (e.g. `Privacy Policy | Splitup`).
 The site states: **create 1 group free, join unlimited groups free**, and buy more
 groups you can create via **one-time** packs of **1 / 5 / unlimited**. Every feature
 is unlocked in every group, free or paid. Packs only change how many groups you can
-create.
+create. Packs are for personal, non-commercial use, and Unlimited has a fair-use
+limit of **30 active groups** (created, not archived or deleted).
 
-> ⚠️ `/terms/` still describes Unlimited as a *"subscription package"* and applies a
-> 30-active-group fair-use cap to it. That wording predates the one-time model and
-> contradicts the landing page. It's legal copy, so it wasn't changed here. Get it
-> reviewed and updated.
+**Splitup Business** (`#business`, below the pricing cards) is for organizations
+creating groups for clients: **250 groups per 12 months** for **$549 / €500**, plus
+**50-group packs** at **$109 / €100**. It's prepaid and invoiced with no auto-renewal,
+so "no subscriptions" still holds. A group counts when created, even if later
+archived or deleted. "Get in touch" is a `mailto:` with the subject
+"Splitup Business enquiry". The definitions live in `/terms/`; group counting and
+Business billing details are covered in `/privacy/`.
 
 ## Regenerating assets
 

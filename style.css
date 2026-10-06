@@ -1014,6 +1014,35 @@ mark {
    --yellow-container (dark in dark mode) while --fg is pinned to ink, which
    left dark-on-dark. Give this chip its own solid pairing instead. */
 .plan-featured .chip { background: var(--ink); border-color: var(--ink); color: #ffffff; }
+.plan-note a { font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Business: an ink card in both themes. Its own shadow uses the page's
+   --shadow-col, so the colors it needs inside are set on the children. */
+.biz {
+  display: grid; gap: 28px;
+  margin-top: 28px; padding: 30px 24px;
+  border: var(--w-border) solid #3d3d3d;
+  border-radius: var(--r-lg);
+  background: var(--ink); color: #f2f2f2;
+  box-shadow: var(--w-shadow) var(--shadow-col);
+}
+@media (min-width: 720px) { .biz { padding: 40px 38px; } }
+@media (min-width: 860px) { .biz { grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: start; } }
+.biz-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.biz-intro > p { color: rgba(255,255,255,.72); font-size: 16px; }
+.biz .kicker { background: var(--yellow); color: var(--ink); }
+.biz-title { font-size: clamp(24px, 6vw, 34px); font-weight: 800; line-height: 1.12; letter-spacing: -.03em; }
+.biz-intro .biz-price { color: var(--yellow); font-size: clamp(30px, 8vw, 42px); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.biz-price small { display: block; margin-top: 8px; font-size: 14px; font-weight: 600; letter-spacing: 0; color: rgba(255,255,255,.66); }
+.biz .btn-yellow { border-color: var(--yellow); box-shadow: var(--w-shadow) rgba(255,255,255,.22); }
+.biz .btn-yellow svg { width: 20px; height: 20px; }
+@media (hover: hover) { .biz .btn-yellow:hover { box-shadow: var(--w-shadow-lg) rgba(255,255,255,.22); } }
+.biz-points ul { display: grid; gap: 13px; }
+.biz-points li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; font-weight: 500; }
+.biz-points li svg { width: 21px; height: 21px; flex: none; margin-top: 1px; color: var(--yellow); }
+.biz-points strong { color: #ffffff; }
+.biz-points .tag { display: inline-block; margin-left: 4px; vertical-align: 1px; background: var(--yellow); color: var(--ink); white-space: nowrap; }
+.biz-note { margin-top: 20px; padding-top: 16px; border-top: 1.5px solid #3d3d3d; font-size: 13.5px; color: rgba(255,255,255,.66); }
 
 /* ============================================================
    FAQ: native <details>, zero JS
