@@ -492,6 +492,12 @@ mark {
     gap: 40px;
   }
   .hero-stage { margin-top: 0; justify-content: flex-end; }
+  /* Side by side, the thread's height lands on the lede and stickers, so it
+     fades out over the copy column and only runs behind the phone. */
+  .hero-thread {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, transparent 56%, #000 66%);
+    mask-image: linear-gradient(to right, transparent 0, transparent 56%, #000 66%);
+  }
 }
 
 /* ============================================================
@@ -1041,7 +1047,6 @@ mark {
 .biz-points li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; font-weight: 500; }
 .biz-points li svg { width: 21px; height: 21px; flex: none; margin-top: 1px; color: var(--yellow); }
 .biz-points strong { color: #ffffff; }
-.biz-points .tag { display: inline-block; margin-left: 4px; vertical-align: 1px; background: var(--yellow); color: var(--ink); white-space: nowrap; }
 .biz-note { margin-top: 20px; padding-top: 16px; border-top: 1.5px solid #3d3d3d; font-size: 13.5px; color: rgba(255,255,255,.66); }
 
 /* ============================================================
